@@ -13,6 +13,10 @@ import {
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -32,11 +36,7 @@ const firebaseConfig = {
   // measurementId: process.env.MEASUREMENT_ID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-const docRef = doc(db, 'allQuestions');
+const docRef = doc(db, 'allQuestions', 'form');
 
 export const addQuestion = async (formData) => {
   try {
