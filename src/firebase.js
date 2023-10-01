@@ -13,10 +13,6 @@ import {
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -35,6 +31,10 @@ const firebaseConfig = {
   // appId: process.env.APP_ID,
   // measurementId: process.env.MEASUREMENT_ID,
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const docRef = doc(db, 'allQuestions', 'form');
 
@@ -120,7 +120,7 @@ export const handleUpdateData = async (formData) => {
       id: r.id,
       email: r.email,
       answers: r.answers.map((r) => ({
-        r,
+        answers: r,
       })),
     })),
   }));
